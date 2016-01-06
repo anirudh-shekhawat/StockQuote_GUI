@@ -9,6 +9,10 @@ class App:
         frame = Frame(master)
         frame.pack()
 
+        self.entry=Entry(frame,width=100)
+        self.entry.pack(side=LEFT)
+        self.entry.focus_set()
+
         self.button = Button(
             frame, text="QUIT", fg="red", command=frame.quit
             )
@@ -25,4 +29,4 @@ root = Tk()
 app = App(root)
 
 root.mainloop()
-root.destroy() # optional; see description below
+root.destroy()
