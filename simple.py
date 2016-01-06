@@ -1,3 +1,5 @@
+#A python script for getting quotation for any stock across any index worlwide.
+#Author:Anirudh S Shekhawat
 from Tkinter import *
 from googlefinance import getQuotes
 import json
@@ -9,7 +11,7 @@ class App:
         frame = Frame(master)
         frame.pack()
 
-        self.entry=Entry(frame,width=100)
+        self.entry=Entry(frame,width=60)
         self.entry.pack(side=LEFT)
         self.entry.focus_set()
 
@@ -18,11 +20,16 @@ class App:
             )
         self.button.pack(side=LEFT)
 
-        self.quote = Button(frame, text="Stock Quotation for RPOWER Listed in NSE", command=self.get_quote)
+        self.quote = Button(frame, text="Get quote for the specified stock and index", command=self.get_quote)
         self.quote.pack(side=LEFT)
 
     def get_quote(self):
-        print json.dumps(getQuotes('BSE:RPOWER'),indent=2)
+        text=self.entry.get()
+        s=text.split()
+        stock=s[0]
+        index=s[1]
+        final_quote=stock+":"+index
+        print json.dumps(getQuotes(final_quote),indent=2)
 
 root = Tk()
 
