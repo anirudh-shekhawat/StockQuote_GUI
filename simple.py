@@ -18,9 +18,9 @@ class App:
         self.button = Button(
             frame, text="QUIT", fg="red", command=frame.quit
             )
-        self.button.pack(side=LEFT)
+        self.button.pack(side=RIGHT)
 
-        self.quote = Button(frame, text="Get quote for the specified stock and index", command=self.get_quote)
+        self.quote = Button(frame, text="Get quote for the specified stock and index",fg="blue", command=self.get_quote)
         self.quote.pack(side=LEFT)
 
     def get_quote(self):
