@@ -17,11 +17,11 @@ class App:
         
         self.Value_of_stock=StringVar()
         self.time_Stamp_of_stock=StringVar()
-        self.display_value=Message(frame,textvariable=self.Value_of_stock)
-        self.display_value.pack(side=LEFT)
+        self.display_value=Message(frame,textvariable=self.Value_of_stock,relief=RAISED,aspect=200)
+        self.display_value.pack(side=RIGHT)
 
-        self.display_timestamp=Message(frame,textvariable=self.time_Stamp_of_stock)
-        self.display_timestamp.pack(side=LEFT)
+        self.display_timestamp=Message(frame,textvariable=self.time_Stamp_of_stock,relief=RAISED,aspect=200)
+        self.display_timestamp.pack(side=RIGHT)
 
         self.button = Button(
             frame, text="QUIT", fg="red", command=frame.quit
