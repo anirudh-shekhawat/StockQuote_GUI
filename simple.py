@@ -2,6 +2,7 @@
 #Author:Anirudh S Shekhawat
 from Tkinter import *
 from googlefinance import getQuotes
+from yahoo_finance import Share
 import json
 
 class App:
@@ -43,7 +44,8 @@ class App:
         self.time_Stamp_of_stock.set(parsed_json[0]['LastTradeDateTimeLong'])
 
 root = Tk()
-
+root.iconbitmap(default='transparent.ico')
+root.title('Get Stock Quote')
 app = App(root)
 
 root.mainloop()
