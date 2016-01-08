@@ -29,7 +29,10 @@ class App:
         stock=s[0]
         index=s[1]
         final_quote=stock+":"+index
-        print json.dumps(getQuotes(final_quote),indent=2)
+        decoded_json=json.dumps(getQuotes(final_quote))
+        parsed_json = json.loads(decoded_json)
+        print(parsed_json[0]['LastTradeWithCurrency'])
+        print(parsed_json[0]['LastTradeDateTimeLong'])
 
 root = Tk()
 
