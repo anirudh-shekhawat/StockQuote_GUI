@@ -14,6 +14,14 @@ class App:
         self.entry=Entry(frame,width=60)
         self.entry.pack(side=LEFT)
         self.entry.focus_set()
+        
+        self.Value_of_stock=StringVar()
+        self.time_Stamp_of_stock=StringVar()
+        self.display_value=Message(frame,textvariable=self.Value_of_stock)
+        self.display_value.pack(side=LEFT)
+
+        self.display_timestamp=Message(frame,textvariable=self.time_Stamp_of_stock)
+        self.display_timestamp.pack(side=LEFT)
 
         self.button = Button(
             frame, text="QUIT", fg="red", command=frame.quit
@@ -31,8 +39,8 @@ class App:
         final_quote=stock+":"+index
         decoded_json=json.dumps(getQuotes(final_quote))
         parsed_json = json.loads(decoded_json)
-        print(parsed_json[0]['LastTradeWithCurrency'])
-        print(parsed_json[0]['LastTradeDateTimeLong'])
+        self.Value_of_stock.set(parsed_json[0]['LastTradeWithCurrency'])
+        self.time_Stamp_of_stock.set(parsed_json[0]['LastTradeDateTimeLong'])
 
 root = Tk()
 
