@@ -1,9 +1,13 @@
 #A python script for getting quotation for any stock across any index worlwide.
 #Author:Anirudh S Shekhawat
+
 from Tkinter import *
 from googlefinance import getQuotes
 from yahoo_finance import Share
+import matplotlib.pyplot as plt
+import matplotlib.dates as dt
 import json
+import operator
 
 class App:
 
@@ -42,6 +46,15 @@ class App:
         parsed_json = json.loads(decoded_json)
         self.Value_of_stock.set(parsed_json[0]['LastTradeWithCurrency'])
         self.time_Stamp_of_stock.set(parsed_json[0]['LastTradeDateTimeLong'])
+        yfinance=Share(index)
+        historic_data=yfinance.get_historical('2015-11-01','2015-12-31')
+        stock_high_values=map(operator.itemgetter('High'),historic_data)
+        stock_trading_date=map(operator.itemgetter('Date'),historic_data)
+        plt.plot(stock_high_values)
+        plt.show()
+        
+        
+        
 
 root = Tk()
 root.iconbitmap(default='transparent.ico')
