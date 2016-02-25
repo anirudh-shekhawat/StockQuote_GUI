@@ -1,5 +1,5 @@
 # StockQuote_GUI
-Python scripts for getting stock market quotes in real time through a GUI.It uses google finance and yahoo finance python API.
+Python scripts for getting stock market quotes in real time through a TkInter based GUI.It uses google finance and yahoo finance python API.
 
 This code takes advantage of google finance's live update and yahoo finance's historical data capability.
 
