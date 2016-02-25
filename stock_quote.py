@@ -8,6 +8,13 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as dt
 import json
 import operator
+from twilio.rest import TwilioRestClient
+
+account_sid = "AC54f90f68ef524ec1d8dbc654a36f321b"  #Enter your Twilio account sid
+auth_token  = "bdb3e1f9439208868c1588647faa759b"    #Enter your Twilio auth token
+from_number = "+12027988108"   #Enter your Twilio number
+to_number = "+917506399694"    #Enter the recepient's number 
+client = TwilioRestClient(account_sid, auth_token)
 
 class App:
 
@@ -46,6 +53,12 @@ class App:
         parsed_json = json.loads(decoded_json)
         self.Value_of_stock.set(parsed_json[0]['LastTradeWithCurrency'])
         self.time_Stamp_of_stock.set(parsed_json[0]['LastTradeDateTimeLong'])
+        mes="Quote for "+index+" indexed on "+stock+" is "+parsed_json[0]['LastTradeWithCurrency']+" timestamp "+parsed_json[0]['LastTradeDateTimeLong']
+        client.messages.create(
+        to=to_number, 
+        from_=from_number, 
+        body=mes
+        )
         yfinance=Share(index)
         historic_data=yfinance.get_historical('2015-11-01','2015-12-31')
         stock_high_values=map(operator.itemgetter('High'),historic_data)
